@@ -15,8 +15,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     {{ __('Você está logado!') }}
+                        <a href="{{ route('oficina.index') }}" class="nav-link">IR PARA OFICINA </a>
+
                 </div>
             </div>
         </div>

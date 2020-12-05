@@ -14,6 +14,22 @@
     @csrf
     <input type ="submit" value="Pesquisar Orçamento">
 </form>
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
+@if ($message = Session::get('success2'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
+@if ($message = Session::get('success3'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
 </td>
     <body>
         <table>

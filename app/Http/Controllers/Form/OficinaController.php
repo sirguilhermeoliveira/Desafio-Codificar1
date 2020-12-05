@@ -9,40 +9,30 @@ use Illuminate\Support\Facades\Hash;
 
 class OficinaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ /**
+  * __construct faz com que o usuário não possa entrar sem usar o Login
+
+  */
     public function __construct()
     {
         $this->middleware('auth');
     }
     public function index()
     {
-        $oficinas = Oficina::all();
-
+        $oficinas = Oficina::orderBy('created_at', 'desc')->paginate(10);
         return view('listAllUsers', [
             'oficinas' => $oficinas
     ]);
         }
+ /**
+  * create do CRUD
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  */
     public function create()
     {
         return view('newUser');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $oficina = new Oficina();
@@ -52,16 +42,13 @@ class OficinaController extends Controller
         $oficina->descricao = $request->descricao;
         $oficina->valororcado = $request->valororcado;
         $oficina->save();
-        return redirect()->route('oficina.index');
+        return redirect()->route('oficina.index')
+        ->with('success', 'Orçamento criado com sucesso!');
     }
+ /**
+  * show do CRUD
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Oficina  $oficina
-     * @return \Illuminate\Http\Response
-     */
+  */
     public function show(Oficina $oficina)
     {
         return view('listUser', [
@@ -69,14 +56,10 @@ class OficinaController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Oficina  $user
-     * @return \Illuminate\Http\Response
-     */
+ /**
+  * edit do CRUD
 
-
+  */
 
     public function edit(Oficina $oficina)
     {
@@ -85,6 +68,10 @@ class OficinaController extends Controller
         ]);
 
     }
+     /**
+  * update do CRUD
+
+  */
     public function update(Request $request, Oficina $oficina)
     {
         $oficina->cliente = $request->cliente;
@@ -93,59 +80,53 @@ class OficinaController extends Controller
         $oficina->descricao = $request->descricao;
         $oficina->valororcado = $request->valororcado;
         $oficina->save();
-        return redirect()->route('oficina.index');
+        return redirect()->route('oficina.index')
+        ->with('success2', 'Orçamento editado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Oficina  $user
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Oficina $oficina)
     {
         $oficina->delete();
-        return redirect()->route('oficina.index');
+        return redirect()->route('oficina.index')
+        ->with('success3', 'Orçamento deletado com sucesso!');
     }
+ /**
+  * searchs's do CRUD
+
+  */
     public function search(Request $request){
-        // Get the search value from the request
+
         $search = $request->input('search');
 
-        // Search in the title and body columns from the posts table
         $oficinas = Oficina::query()
-            ->where('id', 'LIKE', "%{$search}%")
-            ->orWhere('vendedor', 'LIKE', "%{$search}%")
+            ->where('vendedor', 'LIKE', "%{$search}%")
             ->get();
 
-        // Return the search view with the resluts compacted
-        return view('search', compact('oficinas'));
+        return view('search', compact('oficinas'))
+        ->with('success4', 'Resultado da pesquisa!');
     }
     public function searchcliente(Request $request){
-        // Get the search value from the request
+
         $searchcliente = $request->input('searchcliente');
 
-        // Search in the title and body columns from the posts table
+
         $oficinas = Oficina::query()
-            ->where('id', 'LIKE', "%{$searchcliente}%")
-            ->orWhere('cliente', 'LIKE', "%{$searchcliente}%")
+            ->where('cliente', 'LIKE', "%{$searchcliente}%")
             ->get();
 
-        // Return the search view with the resluts compacted
-        return view('search', compact('oficinas'));
+        return view('search', compact('oficinas'))
+        ->with('success4', 'Resultado da pesquisa!');
     }
     public function searchdata(Request $request){
-        // Get the search value from the request
-        $searchdata = $request->input('searchdata');
+        $comeco = $request->input('data1');
+        $fim = $request->input('data2');
 
-        // Search in the title and body columns from the posts table
         $oficinas = Oficina::query()
-        ->where('id', 'LIKE', "%{$searchdata}%")
-        ->orWhere('data', 'LIKE', "%{$searchdata}%")
-        ->get();
+            ->whereBetween('data', array($comeco, $fim))
+            ->get();
 
-
-        // Return the search view with the resluts compacted
-        return view('search', compact('oficinas'));
+        return view('search', compact('oficinas'))
+        ->with('success4', 'Resultado da pesquisa!');
     }
 
 }

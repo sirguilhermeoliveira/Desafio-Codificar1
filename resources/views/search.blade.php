@@ -11,21 +11,26 @@
     @csrf
     <input type ="submit" value="Voltar para Começo">
 </form>
+@if ($message = Session::get('success4'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+</div>
     <body>
-        <form action="{{ route('search') }}" method="GET">
-            <table>
-            <input type="text" name="search" placeholder="Nome Vendedor" required/>
-            <button type="submit">Procurar por Vendedor</button>
-        </form>
         <form action="{{ route('searchcliente') }}" method="GET">
             <table>
             <input type="text" name="searchcliente" placeholder="Nome Cliente" required/>
             <button type="submit">Procurar por Cliente</button>
         </form>
+        <form action="{{ route('search') }}" method="GET">
+            <table>
+            <input type="text" name="search" placeholder="Nome Vendedor" required/>
+            <button type="submit">Procurar por Vendedor</button>
+        </form>
         <form action="{{ route('searchdata') }}" method="GET">
             <table>
-            <input type="date" name="data" placeholder="Data Inicial" required/>
-            <input type="date" name="data" placeholder="Data Final" required/>
+            <input type="date" name="data1" value="data1" placeholder="Data Inicial" required/>
+            <input type="date" name="data2" value="data2" placeholder="Data Final" required/>
             <button type="submit">Procurar por Data</button>
         </form>
         @if($oficinas->isNotEmpty())
