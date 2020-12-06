@@ -29,16 +29,22 @@
 > Respostas Desafios
 
 ##Controller: /Form/OficinaController
+#Contém os controllers da Oficina(CRUD+Search).
 
 ##Model: Oficina
+#Contém a Model da Oficina.
 
 ##Migrations: oficinas_table
+#Contém as Migrations da Oficina.
 
 ##Rotas: web.php
+#Contém as rotas da Oficina.
 
 ##Views: views/
+#Contém as views de acesso a Oficina.
 
 ##Login: Controllers/Auth/ + views/auth/ + views/layout/ + views/home
+#Contém o Login feito para a Oficina.
 
 > Instalação
 
