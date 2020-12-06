@@ -1,6 +1,6 @@
 # Desafio-Codificar
 
-> Tarefas
+> Tarefas[Desafios]
 
 ##1.0[done]
 #Criar um repositório no Github e compartilhar o link com a equipe da Codificar
@@ -13,24 +13,33 @@
 
 ##2.2[done]
 #Armazená-los em um banco de dados que julgar mais adequado (SQL, NoSQL, search server, etc).
+
 ##3.0[done]
 #Criar uma tela de pesquisa de orçamento
+
 ##3.1[done]
 #A tela de pesquisa deverá ter filtro por intervalo de datas, nome do cliente e nome do vendedor. 
+
 ##3.2[done]
 #A tela deverá conter uma tabela com os dados já filtrados e listados por ordem decrescente da data de cadastro do orçamento
+
 ##3.3[done]
 #A tela deverá conter as ações de editar e remover os orçamentos realizados
 
->Respostas
+> Respostas Desafios
 ##Controller: /Form/OficinaController
+
 ##Model: Oficina
+
 ##Migrations: oficinas_table
+
 ##Rotas: web.php
+
 ##Views: views/
+
 ##Login: Controllers/Auth + views/auth views/layout views/home
 
-## Instalação
+> Instalação
 
 ``` bash
 # Instala as dependências e abre o servidor
