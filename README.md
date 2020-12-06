@@ -38,7 +38,7 @@
 
 ##Views: views/
 
-##Login: Controllers/Auth + views/auth views/layout views/home
+##Login: Controllers/Auth/ + views/auth/ + views/layout/ + views/home
 
 > Instalação
 
