@@ -4,10 +4,13 @@
 
 ##1.0[done]
 #Criar um repositório no Github e compartilhar o link com a equipe da Codificar
+
 ##2.0[done]
 #Utilizando preferencialmente a linguagem PHP e o framework Laravel, criar a tela de cadastro de orçamento.
+
 ##2.1[done]
 #Os campos de cadastro serão: id, cliente, data e hora do orçamento, vendedor, descrição, valor orçado. A tela deve permitir também a edição.
+
 ##2.2[done]
 #Armazená-los em um banco de dados que julgar mais adequado (SQL, NoSQL, search server, etc).
 ##3.0[done]
